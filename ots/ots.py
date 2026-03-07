@@ -11,6 +11,21 @@ BOT_USERNAME = os.environ ['https://t.me/ggwrgwgwjqbot']
 SUPPORT_USERNAME = os.environ ['zeffosnft.t.me']
 
 bot = telebot.TeleBot(BOT_TOKEN, parse_mode="HTML")
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "I am alive!"
+
+def run():
+  app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
 
 print("🚀 Бот запущен")
 print("🚀 PLAYEROK OTC FINAL STARTED")
