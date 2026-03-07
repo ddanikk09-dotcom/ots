@@ -6,9 +6,9 @@ from datetime import datetime
 
 print("файл запускается")
 
-BOT_TOKEN = "8673582635:AAGtauSg8Ayy0nX0sL4JC23EvrtXnr6QdzA"
-BOT_USERNAME = "https://t.me/ggwrgwgwjqbot"
-SUPPORT_USERNAME = "@zeffosnft"
+BOT_TOKEN = os.environ ['8715352832:AAEHSb79aizib1wgFHaNTD1C3PBZoyaxq7o']
+BOT_USERNAME = os.environ ['https://t.me/ggwrgwgwjqbot']
+SUPPORT_USERNAME = os.environ ['zeffosnft.t.me']
 
 bot = telebot.TeleBot(BOT_TOKEN, parse_mode="HTML")
 
@@ -289,6 +289,21 @@ def my_deals(call):
 
     bot.send_message(call.from_user.id, text)
     
-print("бот стартовал")
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot is alive!"
+
+def run():
+    app.run(host='0.0.0.0', port=3000)
+
+# Запуск сервера в отдельном потоке
+t = Thread(target=run)
+t.start() 
+
 print("✅ FINAL INLINE OTC WITH STARS RUNNING")
 bot.infinity_polling(skip_pending=True)
