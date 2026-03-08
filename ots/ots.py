@@ -6,26 +6,13 @@ from datetime import datetime
 
 print("файл запускается")
 
-BOT_TOKEN = os.environ ['8715352832:AAEHSb79aizib1wgFHaNTD1C3PBZoyaxq7o']
-BOT_USERNAME = os.environ ['https://t.me/ggwrgwgwjqbot']
-SUPPORT_USERNAME = os.environ ['zeffosnft.t.me']
+import os
+
+BOT_TOKEN = os.environ['BOT_TOKEN']
+BOT_USERNAME = os.environ['BOT_USERNAME']
+SUPPORT_USERNAME = os.environ['SUPPORT_USERNAME']
 
 bot = telebot.TeleBot(BOT_TOKEN, parse_mode="HTML")
-from flask import Flask
-from threading import Thread
-
-app = Flask('')
-
-@app.route('/')
-def home():
-    return "I am alive!"
-
-def run():
-  app.run(host='0.0.0.0', port=8080)
-
-def keep_alive():
-    t = Thread(target=run)
-    t.start()
 
 print("🚀 Бот запущен")
 print("🚀 PLAYEROK OTC FINAL STARTED")
@@ -303,7 +290,25 @@ def my_deals(call):
         text += f"#{d[0]} | {d[1]} {d[2]} | {d[3]}\n"
 
     bot.send_message(call.from_user.id, text)
-    
+
+    from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "I am alive!"
+
+def run():
+  app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
+
+keep_alive()
+
 print("✅ FINAL INLINE OTC WITH STARS RUNNING")
 bot.infinity_polling(skip_pending=True)
 
