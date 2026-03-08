@@ -291,7 +291,13 @@ def my_deals(call):
 
     bot.send_message(call.from_user.id, text)
 
-    from flask import Flask
+print("✅ FINAL INLINE OTC WITH STARS RUNNING")
+# ======= конец всех функций и хендлеров =======
+
+print("✅ FINAL INLINE OTC WITH STARS RUNNING")
+
+# ======= Запуск Flask для keep-alive =======
+from flask import Flask
 from threading import Thread
 
 app = Flask('')
@@ -301,14 +307,13 @@ def home():
     return "I am alive!"
 
 def run():
-  app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=8080)
 
 def keep_alive():
     t = Thread(target=run)
     t.start()
 
-keep_alive()
+keep_alive()  # запускаем сервер
 
-print("✅ FINAL INLINE OTC WITH STARS RUNNING")
+# ======= Запуск бота =======
 bot.infinity_polling(skip_pending=True)
-
